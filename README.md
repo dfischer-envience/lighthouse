@@ -1,0 +1,2 @@
+# lighthouse
+Azure Lighthouse deployments
