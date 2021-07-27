@@ -1,0 +1,88 @@
+{
+ "$schema": "https://schema.management.azure.com/schemas/2019-08-01/subscriptionDeploymentTemplate.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+  "mspOfferName": {
+   "type": "string",
+   "metadata": {
+    "description": "Specify a unique name for your offer"
+   },
+   "defaultValue": "Envience Managed Cloud Service"
+  },
+  "mspOfferDescription": {
+   "type": "string",
+   "metadata": {
+    "description": "Name of the Managed Service Provider offering"
+   },
+   "defaultValue": "Envience Managed Cloud Service"
+  },
+  "managedByTenantId": {
+   "type": "string",
+   "metadata": {
+    "description": "Specify the tenant id of the Managed Service Provider"
+   },
+   "defaultValue": "2b242ac9-94af-42be-b494-1b6ff086a88f"
+  },
+  "authorizations": {
+   "type": "array",
+   "metadata": {
+    "description": "Specify an array of objects, containing tuples of Azure Active Directory principalId, a Azure roleDefinitionId, and an optional principalIdDisplayName. The roleDefinition specified is granted to the principalId in the provider's Active Directory and the principalIdDisplayName is visible to customers."
+   },
+   "defaultValue": [
+    {
+     "principalId": "1a1e6a8d-24cb-4d0e-ba43-0ef2d2c8679b",
+     "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+     "principalIdDisplayName": "Docusnap Azure and Office 365 Dokumentation Service Principal"
+    },
+    {
+     "principalId": "f19e6637-4b05-42ca-816e-2e1ee8417310",
+     "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+     "principalIdDisplayName": "Envience-Tier1-Monitoring"
+    },
+    {
+     "principalId": "80e09c25-cecd-4fc9-b079-27027652e4d3",
+     "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+     "principalIdDisplayName": "Envience-Tier2-Contributor"
+    }
+   ]
+  }
+ },
+ "variables": {
+  "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
+  "mspAssignmentName": "[guid(parameters('mspOfferName'))]"
+ },
+ "resources": [
+  {
+   "type": "Microsoft.ManagedServices/registrationDefinitions",
+   "apiVersion": "2020-02-01-preview",
+   "name": "[variables('mspRegistrationName')]",
+   "properties": {
+    "registrationDefinitionName": "[parameters('mspOfferName')]",
+    "description": "[parameters('mspOfferDescription')]",
+    "managedByTenantId": "[parameters('managedByTenantId')]",
+    "authorizations": "[parameters('authorizations')]"
+   }
+  },
+  {
+   "type": "Microsoft.ManagedServices/registrationAssignments",
+   "apiVersion": "2020-02-01-preview",
+   "name": "[variables('mspAssignmentName')]",
+   "dependsOn": [
+    "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+   ],
+   "properties": {
+    "registrationDefinitionId": "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+   }
+  }
+ ],
+ "outputs": {
+  "mspOfferName": {
+   "type": "string",
+   "value": "[concat('Managed by', ' ', parameters('mspOfferName'))]"
+  },
+  "authorizations": {
+   "type": "array",
+   "value": "[parameters('authorizations')]"
+  }
+ }
+}
