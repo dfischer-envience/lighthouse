@@ -44,9 +44,9 @@
      "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
      "principalIdDisplayName": "Envience-Tier2-Contributor"
     },
-     {
+    {
      "principalId": "4c1c296e-df37-48f5-88e7-72c0d4f3a422",
-     "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+     "roleDefinitionId": "a8889054-8d42-49c9-bc1c-52486c10e7cd",
      "principalIdDisplayName": "Envience-AzureReservationManager"
     }
    ]
