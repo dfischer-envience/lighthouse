@@ -7,21 +7,21 @@
    "metadata": {
     "description": "Specify a unique name for your offer"
    },
-   "defaultValue": "ERCWP Managed Cloud"
+   "defaultValue": "Envience Managed Azure Cloud"
   },
   "mspOfferDescription": {
    "type": "string",
    "metadata": {
     "description": "Name of the Managed Service Provider offering"
    },
-   "defaultValue": "ERCWP Managed Cloud"
+   "defaultValue": "Envience Managed Azure Cloud"
   },
   "managedByTenantId": {
    "type": "string",
    "metadata": {
     "description": "Specify the tenant id of the Managed Service Provider"
    },
-   "defaultValue": "44981b28-6800-4dea-aefd-1352a501a633"
+   "defaultValue": "2b242ac9-94af-42be-b494-1b6ff086a88f"
   },
   "authorizations": {
    "type": "array",
@@ -30,19 +30,19 @@
    },
    "defaultValue": [
     {
-     "principalId": "8d4a173c-0cd7-4130-9f16-7f5e9f92926c",
+     "principalId": "f19e6637-4b05-42ca-816e-2e1ee8417310",
      "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-     "principalIdDisplayName": "ERCWP-Tier1-Monitoring"
+     "principalIdDisplayName": "Envience-Tier1-Monitoring"
     },
     {
-     "principalId": "60564813-dd02-4cc0-884e-51863c070828",
+     "principalId": "80e09c25-cecd-4fc9-b079-27027652e4d3",
      "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
-     "principalIdDisplayName": "ERCWP-Tier2-Contributor"
+     "principalIdDisplayName": "Envience-Tier2-Contributor"
     },
     {
-     "principalId": "1d59684d-1bcf-4260-807f-82a692ff4f6d",
+     "principalId": "4c1c296e-df37-48f5-88e7-72c0d4f3a422",
      "roleDefinitionId": "a8889054-8d42-49c9-bc1c-52486c10e7cd",
-     "principalIdDisplayName": "ERCWP-AzureReservationManager"
+     "principalIdDisplayName": "Envience-AzureReservationManager"
     }
    ]
   }
